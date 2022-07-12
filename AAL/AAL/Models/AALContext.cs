@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AAL.Models
 {
-    public partial class AALContext : IdentityDbContext
+    public partial class AALContext : IdentityDbContext<CustomUser>
     {
         public AALContext()
         {
@@ -52,7 +52,6 @@ namespace AAL.Models
             //modelBuilder.Ignore<CustomUser>();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CustomUser>().HasOne(u => u.UserInfo).WithOne(i => i.CustomUser).HasForeignKey<UserInfo>(e => e.UserId);
-            modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(u=>u.ProviderKey) ;
             //modelBuilder.Entity<IdentityUserRole<string>>().HasKey(u => u.);
 
 

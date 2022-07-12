@@ -11,7 +11,7 @@ builder.Services.AddDbContext<AALContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<CustomUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AALContext>();
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
@@ -35,10 +35,20 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapRazorPages();
 
-app.MapControllerRoute(
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapAreaControllerRoute(
+       name: "areas",
+       areaName: "Admin",
+       pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+   );
+
+    endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+});
+
 
 app.Run();
