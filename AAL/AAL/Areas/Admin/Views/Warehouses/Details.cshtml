@@ -1,0 +1,37 @@
+﻿@model AAL.Models.Warehouse
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Warehouse</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WarehouseName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WarehouseName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WarehouseAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WarehouseAddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WarehouseContact)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WarehouseContact)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.WarehouseId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
