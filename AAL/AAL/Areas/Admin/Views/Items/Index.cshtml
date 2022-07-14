@@ -17,7 +17,7 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.ItemName)
+                            Item Name
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Brand)
@@ -26,7 +26,7 @@
                             @Html.DisplayNameFor(model => model.Model)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Desc)
+                            Description
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Img)
@@ -38,10 +38,10 @@
                             @Html.DisplayNameFor(model => model.Stock)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Cat)
+                            Category
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Warehouse)
+                            Warehouse
                         </th>
                         <th></th>
                     </tr>
@@ -72,10 +72,10 @@
                                 @Html.DisplayFor(modelItem => item.Stock)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Cat.CatId)
+                                @Html.DisplayFor(modelItem => item.Cat.CatName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Warehouse.WarehouseId)
+                                @Html.DisplayFor(modelItem => item.Warehouse.WarehouseName)
                             </td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |

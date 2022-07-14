@@ -17,10 +17,10 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.CatName)
+                           Category Name
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CatParent)
+                            Category Parent
                         </th>
                         <th></th>
                     </tr>
@@ -33,7 +33,14 @@
                                 @Html.DisplayFor(modelItem => item.CatName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CatParent.CatId)
+                                
+                                    @if(item.CatParent == null)
+                                    {
+                                        @Html.Raw("No parent");
+                                    }else
+                                        @Html.DisplayFor(modelItem => item.CatParent.CatName)
+                                 
+                                    
                             </td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.CatId">Edit</a> |

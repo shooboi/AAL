@@ -12,16 +12,16 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CatName)
+            Category Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CatName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CatParent)
+            Category Parent
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CatParent.CatId)
+            @Html.DisplayFor(model => model.CatParent.CatName)
         </dd>
     </dl>
 </div>
@@ -29,3 +29,6 @@
     <a asp-action="Edit" asp-route-id="@Model?.CatId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+
