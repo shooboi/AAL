@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AAL.Models
 {
@@ -10,8 +11,9 @@ namespace AAL.Models
             InverseCatParent = new HashSet<Category>();
             Items = new HashSet<Item>();
         }
-
         public int CatId { get; set; }
+        [Required]
+        [StringLength(30,MinimumLength =3)]
         public string? CatName { get; set; }
         public int? CatParentId { get; set; }
 
