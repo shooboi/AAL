@@ -48,7 +48,7 @@ namespace AAL.Areas.Admin.Controllers
         // GET: Admin/Categories/Create
         public IActionResult Create()
         {
-            ViewData["CatParentId"] = new SelectList(_context.Categories, "CatId", "CatId");
+            ViewData["CatParentId"] = new SelectList(_context.Categories, "CatId", "CatName");
             return View();
         }
 
@@ -82,7 +82,7 @@ namespace AAL.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CatParentId"] = new SelectList(_context.Categories, "CatId", "CatId", category.CatParentId);
+            ViewData["CatParentId"] = new SelectList(_context.Categories, "CatId", "CatName", category.CatParentId);
             return View(category);
         }
 
