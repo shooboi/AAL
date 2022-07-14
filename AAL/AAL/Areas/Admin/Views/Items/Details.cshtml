@@ -12,7 +12,7 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemName)
+            Item Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ItemName)
@@ -30,7 +30,7 @@
             @Html.DisplayFor(model => model.Model)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Desc)
+            Description
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Desc)
@@ -54,16 +54,16 @@
             @Html.DisplayFor(model => model.Stock)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cat)
+            Category
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cat.CatId)
+            @Html.DisplayFor(model => model.Cat.CatName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Warehouse)
+            Warehouse
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Warehouse.WarehouseId)
+            @Html.DisplayFor(model => model.Warehouse.WarehouseName)
         </dd>
     </dl>
 </div>

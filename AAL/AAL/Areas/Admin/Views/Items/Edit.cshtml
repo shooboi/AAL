@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ItemId" />
             <div class="form-group">
-                <label asp-for="ItemName" class="control-label"></label>
+                <label asp-for="ItemName" class="control-label">item Name</label>
                 <input asp-for="ItemName" class="form-control" />
                 <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
@@ -30,7 +30,7 @@
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Desc" class="control-label"></label>
+                <label asp-for="Desc" class="control-label">Description</label>
                 <input asp-for="Desc" class="form-control" />
                 <span asp-validation-for="Desc" class="text-danger"></span>
             </div>
@@ -50,12 +50,12 @@
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CatId" class="control-label"></label>
+                <label asp-for="CatId" class="control-label">Category</label>
                 <select asp-for="CatId" class="form-control" asp-items="ViewBag.CatId"></select>
                 <span asp-validation-for="CatId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WarehouseId" class="control-label"></label>
+                <label asp-for="WarehouseId" class="control-label">Warehouse</label>
                 <select asp-for="WarehouseId" class="form-control" asp-items="ViewBag.WarehouseId"></select>
                 <span asp-validation-for="WarehouseId" class="text-danger"></span>
             </div>

@@ -15,12 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CatId" />
             <div class="form-group">
-                <label asp-for="CatName" class="control-label"></label>
+                <label asp-for="CatName" class="control-label">Category Name</label>
                 <input asp-for="CatName" class="form-control" />
                 <span asp-validation-for="CatName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CatParentId" class="control-label"></label>
+                <label asp-for="CatParentId" class="control-label">Category Parent</label>
                 <select asp-for="CatParentId" class="form-control" asp-items="ViewBag.CatParentId"></select>
                 <span asp-validation-for="CatParentId" class="text-danger"></span>
             </div>

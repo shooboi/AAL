@@ -49,8 +49,8 @@ namespace AAL.Areas.Admin.Controllers
         // GET: Admin/Items/Create
         public IActionResult Create()
         {
-            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatId");
-            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseId");
+            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatName");
+            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseName");
             return View();
         }
 
@@ -85,8 +85,8 @@ namespace AAL.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatId", item.CatId);
-            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseId", item.WarehouseId);
+            ViewData["CatId"] = new SelectList(_context.Categories, "CatId", "CatName", item.CatId);
+            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseName", item.WarehouseId);
             return View(item);
         }
 
