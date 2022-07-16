@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AAL.Models
 {
@@ -12,6 +13,7 @@ namespace AAL.Models
         }
 
         public int OrderId { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? OrderDate { get; set; }
         public string? Status { get; set; }
 

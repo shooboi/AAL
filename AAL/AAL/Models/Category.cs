@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AAL.Models
 {
@@ -13,6 +14,7 @@ namespace AAL.Models
 
         public int CatId { get; set; }
         public string? CatName { get; set; }
+        [Range(0, int.MaxValue)]
         public int? CatParentId { get; set; }
 
         public virtual Category? CatParent { get; set; }
