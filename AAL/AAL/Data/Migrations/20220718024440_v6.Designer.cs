@@ -4,6 +4,7 @@ using AAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AAL.Data.Migrations
 {
     [DbContext(typeof(AALContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220718024440_v6")]
+    partial class v6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,14 +119,14 @@ namespace AAL.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0825e237-8a73-4a28-9145-c0bc3406bab4",
+                            ConcurrencyStamp = "e3002da8-8203-4d2a-9936-99bf3658bfbc",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAeNb0fV5kSmT3VXxC4b0FBnRc5vSrzo1VzM37v13dnCoygxeq+Z8b/Z1OCGYMc6QA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPj6U/az/hjO0ncUfCF6k65IylNCyFeSykHElTtom6UbRXaihKTByFnNSk81XIdgUQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ac711acc-9121-4615-891a-ac52fad7344d",
+                            SecurityStamp = "69b98eb7-5348-4881-850f-6250f3c384ac",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

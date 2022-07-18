@@ -51,6 +51,9 @@ namespace AAL.Models
             //modelBuilder.Ignore<IdentityUser<string>>();
             //modelBuilder.Ignore<CustomUser>();
             base.OnModelCreating(modelBuilder);
+            this.SeedUsers(modelBuilder);
+            this.SeedRoles(modelBuilder);
+            this.SeedUserRoles(modelBuilder);
             modelBuilder.Entity<CustomUser>().HasOne(u => u.UserInfo).WithOne(i => i.CustomUser).HasForeignKey<UserInfo>(e => e.UserId);
             //modelBuilder.Entity<IdentityUserRole<string>>().HasKey(u => u.);
 
@@ -294,5 +297,34 @@ namespace AAL.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public void SeedUsers(ModelBuilder builder)
+        {
+            var passwordHasher = new PasswordHasher<CustomUser>();
+            CustomUser user = new CustomUser()
+            {
+                Id = "1",
+                UserName = "admin",
+                Email = "Admin@gmail.com",
+                NormalizedUserName = "admin",
+                PasswordHash = passwordHasher.HashPassword(null, "Abc@12345"),
+                LockoutEnabled = true,
+                EmailConfirmed = true,
+            };
+
+            builder.Entity<CustomUser>().HasData(user);
+        }
+
+        private void SeedRoles(ModelBuilder builder)
+        {
+            builder.Entity<IdentityRole>().HasData(
+                new IdentityRole() { Id = "1", Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "admin" },
+                new IdentityRole() { Id = "2", Name = "User", ConcurrencyStamp = "2", NormalizedName = "user" }
+                );
+        }
+        private void SeedUserRoles(ModelBuilder builder)
+        {
+            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>() { RoleId = "1", UserId = "1" });
+        }
     }
 }

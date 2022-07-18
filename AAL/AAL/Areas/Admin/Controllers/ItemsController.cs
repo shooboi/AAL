@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AAL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AAL.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ItemsController : Controller
     {
         private readonly AALContext _context;
