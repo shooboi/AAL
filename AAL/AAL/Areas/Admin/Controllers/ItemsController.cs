@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AAL.Models;
 using Microsoft.AspNetCore.Authorization;
+using AAL.Models.DTO;
 
 namespace AAL.Areas.Admin.Controllers
 {
@@ -171,6 +172,19 @@ namespace AAL.Areas.Admin.Controllers
         private bool ItemExists(int id)
         {
           return (_context.Items?.Any(e => e.ItemId == id)).GetValueOrDefault();
+        }
+        public async Task<string> Upload(IFormFile file)
+
+        {
+            var path = await Utility.UploadFile(file, "ItemImages");
+            return path;
+        }
+
+        public IActionResult DeleteFile(string filetodelete)
+
+        {
+            Utility.Delete(filetodelete, "ItemImages");
+            return RedirectToAction("Index");
         }
     }
 }
