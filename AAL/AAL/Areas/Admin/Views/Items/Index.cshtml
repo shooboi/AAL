@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+    TempData["Img"] = "";
 }
 
 <h1>Index</h1>
@@ -63,7 +64,10 @@
                                 @Html.DisplayFor(modelItem => item.Desc)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Img)
+                                <button class="btn-primary" onmouseover=".style.display=='btn-primary:hover'" title="Click to Show/Hide Image" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">Show/Hide</button>
+                                <div id="spoiler" style="display:none">
+                                    <img src="@item.Img" alt="" height=100 width=200 />
+                                </div>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Price)

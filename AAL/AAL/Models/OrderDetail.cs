@@ -7,6 +7,7 @@ namespace AAL.Models
     public partial class OrderDetail
     {
         public int OrderDetailId { get; set; }
+        [Range(0, int.MaxValue)]
         public int? OrderId { get; set; }
         [Range(0, double.MaxValue)]
         public decimal? TotalPrice { get; set; }
