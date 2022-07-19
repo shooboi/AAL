@@ -12,18 +12,27 @@ namespace AAL.Models
         }
 
         public int ItemId { get; set; }
+        [Required]
+        [StringLength(30,MinimumLength =3)]
         public string? ItemName { get; set; }
+        [Required]
+        [StringLength(30, MinimumLength = 3)]
         public string? Brand { get; set; }
+        [Required]
+        [StringLength(30, MinimumLength = 3)]
         public string? Model { get; set; }
+        [Required]
+        [StringLength(30, MinimumLength = 3)]
         public string? Desc { get; set; }
+        [Required]
         public string? Img { get; set; }
-        [Range(0, double.MaxValue)]
+        [Required]
+        [Range(1,double.MaxValue)]
         public decimal? Price { get; set; }
-        [Range(0, int.MaxValue)]
+        [Required]
+        [Range(1,int.MaxValue)]
         public int? Stock { get; set; }
-        [Range(0, int.MaxValue)]
         public int? CatId { get; set; }
-        [Range(0, int.MaxValue)]
         public int? WarehouseId { get; set; }
 
         public virtual Category? Cat { get; set; }

@@ -1,5 +1,6 @@
 ﻿using AAL.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace AAL.Controllers

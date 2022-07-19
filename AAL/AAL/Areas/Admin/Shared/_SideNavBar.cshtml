@@ -19,7 +19,9 @@
                     <li class="nav-header hidden-folded">
                         <small class="text-muted">Main</small>
                     </li>
-                    <li>
+
+                    <li class = "@Html.IsActive("Admin" ,"Home")">
+                        
                         <a asp-controller="Home" asp-action="">
                             <span class="nav-icon">
                                 <i class="material-icons">
@@ -30,7 +32,7 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="@Html.IsActive("Admin" ,"Categories")">
                         <a asp-controller="Categories" asp-action="">
                             <span class="nav-icon">
                                 <i class="material-icons">
@@ -41,7 +43,7 @@
                             <span class="nav-text">Category</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="@Html.IsActive("Admin" ,"Warehouses")">
                         <a asp-controller="Warehouses" asp-action="">
                             <span class="nav-icon">
                                 <i class="material-icons">
@@ -52,7 +54,7 @@
                             <span class="nav-text">Warehouse</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="@Html.IsActive("Admin" ,"Items")"> 
                         <a asp-controller="Items" asp-action="">
                             <span class="nav-icon">
                                 <i class="material-icons">
@@ -63,7 +65,7 @@
                             <span class="nav-text">Items</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="@Html.IsActive("Admin" ,"Orders")">
                         <a asp-controller="Orders" asp-action="">
                             <span class="nav-icon">
                                 <i class="material-icons">

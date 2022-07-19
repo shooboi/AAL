@@ -11,8 +11,9 @@ namespace AAL.Models
             InverseCatParent = new HashSet<Category>();
             Items = new HashSet<Item>();
         }
-
         public int CatId { get; set; }
+        [Required]
+        [StringLength(30,MinimumLength =3)]
         public string? CatName { get; set; }
         [Range(0, int.MaxValue)]
         public int? CatParentId { get; set; }
