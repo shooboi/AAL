@@ -5,51 +5,64 @@
     Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h5 class="page-title">Warehouse</h5>
+        </div>
+    </div>
+    <!-- end row -->
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div class="padding">
-    <div class="box">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WarehouseName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WarehouseAddress)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WarehouseContact)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.WarehouseName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.WarehouseAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.WarehouseContact)
-                            </td>
-                            <td>
-                                <a class="fa  fa-pencil" asp-action="Edit" asp-route-id="@item.WarehouseId"> Edit</a> |
-                                <a class = " fa fa-info-circle" asp-action="Details" asp-route-id="@item.WarehouseId"> Details</a> |
-                                <a class=" fa fa-trash asp-action="Delete" asp-route-id="@item.WarehouseId"> Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30 indexPage">
+                <div class="padding">
+                    <div class="box">
+                        <div class="p-1 pl-10">
+                            <a class="btn btn-primary" asp-action="Create">Create new</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap p-1">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.WarehouseName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.WarehouseAddress)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.WarehouseContact)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WarehouseName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WarehouseAddress)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WarehouseContact)
+                                            </td>
+                                            <td>
+                                                <a class="fa  fa-pencil" asp-action="Edit" asp-route-id="@item.WarehouseId"> Edit</a> |
+                                                <a class=" fa fa-info-circle" asp-action="Details" asp-route-id="@item.WarehouseId"> Details</a> |
+                                                <a class=" fa fa-trash" asp-action="Delete" asp-route-id="@item.WarehouseId"> Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -18051,3 +18051,7 @@ Layout - Footer
   background-position: center 50%;
   background-repeat: no-repeat;
 }
+
+.indexPage{
+    height:650px;
+}
