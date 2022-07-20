@@ -1,76 +1,56 @@
 ﻿@model IEnumerable<AAL.Models.Category>
 
 @{
-    ViewData["Title"] = "Category list";
+    ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
 }
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <h5 class="page-title">Category</h5>
-        </div>
-    </div>
-    <!-- end row -->
 
-    <div class="row ">
-        <div class="col-12">
-            <div class="card m-b-30 indexPage">
-                <div class="padding">
-                    <div class="box">
-                        <div class="p-1 pl-10">
-                            <a class="btn btn-primary" asp-action="Create">Create new</a>
-                        </div>
-                        <div class="table-responsive">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap p-1">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Category Name
-                                        </th>
-                                        <th>
-                                            Category Parent
-                                        </th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="padding">
+    <div class="box">
+        <div class="table-responsive">
+            <table class="table p-1">
+                <thead>
+                    <tr>
+                        <th>
+                           Category Name
+                        </th>
+                        <th>
+                            Category Parent
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CatName)
+                            </td>
+                            <td>
+                                
+                                    @if(item.CatParent == null)
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.CatName)
-                                            </td>
-                                            <td>
-
-                                                @if (item.CatParent == null)
-                                                {
-                                                    @Html.Raw("No parent")
-                                                    ;
-                                                }
-                                                else
-                                                    @Html.DisplayFor(modelItem => item.CatParent.CatName)
-
-
-
-
-
-
-                                                </td>
-                                                <td>
-                                                    <a asp-action="Edit" asp-route-id="@item.CatId">Edit</a> |
-                                                    <a asp-action="Details" asp-route-id="@item.CatId">Details</a> |
-                                                    <a asp-action="Delete" asp-route-id="@item.CatId">Delete</a>
-                                                </td>
-                                            </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                        @Html.Raw("No parent");
+                                    }else
+                                        @Html.DisplayFor(modelItem => item.CatParent.CatName)
+                                 
+                                    
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.CatId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.CatId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.CatId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
-<!-- End Right content here -->

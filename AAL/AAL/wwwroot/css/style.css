@@ -18052,6 +18052,10 @@ Layout - Footer
   background-repeat: no-repeat;
 }
 
-.indexPage{
-    height:650px;
+/*Center Align*/
+.center-align {
+    display: flex;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
 }
