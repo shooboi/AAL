@@ -5,12 +5,24 @@
     Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="float-right page-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="">Category</a></li>
+                    <li class="breadcrumb-item"><a>Edit</a></li>
+                </ol>
+            </div>
+            <h5 class="page-title">Edit Category</h5>
+        </div>
+    </div>
+</div>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+ <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30">
+                <div class="card-body">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CatId" />
@@ -29,11 +41,12 @@
             </div>
         </form>
     </div>
+
+</div>
+</div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
