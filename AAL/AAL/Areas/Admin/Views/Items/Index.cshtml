@@ -72,7 +72,15 @@
                                                 @Html.DisplayFor(modelItem => item.Desc)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Img)
+                                                <div id="Item_@item.ItemId" style="display:none">
+                                                    <img src="@item.Img" alt="" height=100 width=200 />
+                                                </div>
+                                                <button class="btn-primary" onmouseover=".style.display=='btn-primary:hover'" title="Click to Show/Hide Image"
+                                                    type="button" onclick="if(document.getElementById('Item_@item.ItemId') .style.display=='none')
+                                    {document.getElementById('Item_@item.ItemId') .style.display=''}
+                                    else {document.getElementById('Item_@item.ItemId') .style.display='none'}">
+                                                    Show/Hide
+                                                </button>
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Price)
@@ -88,7 +96,7 @@
                                             </td>
                                             <td>
                                                 <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a>
-                                                <a asp-action="Details" asp-route-id="@item.ItemId">Details</a> 
+                                                <a asp-action="Details" asp-route-id="@item.ItemId">Details</a>
                                                 <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
                                             </td>
                                         </tr>
