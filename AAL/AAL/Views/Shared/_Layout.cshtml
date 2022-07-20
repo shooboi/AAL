@@ -109,16 +109,16 @@
                     <div class="col-3 text-right">
                         <!-- Start Header Action Icon -->
                         <ul class="header-action-icon">
-                            <li>
+                            @*<li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                     <i class="icon-heart"></i>
                                     <span class="header-action-icon-item-count">3</span>
                                 </a>
-                            </li>
+                            </li>*@
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="icon-shopping-cart"></i>
-                                    <span class="header-action-icon-item-count">3</span>
+                                   @* <span class="header-action-icon-item-count"></span>*@
                                 </a>
                             </li>
                         </ul> <!-- End Header Action Icon -->
@@ -135,16 +135,14 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="index.html">Home <i class="fa fa-angle-down"></i></a>
-                                        <!-- Sub Menu -->
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
-                                        </ul>
+                                    <li>
+                                        <a class="active main-menu-link" asp-controller="Home" asp-action="">Home</a>
+                                    </li>
+                                    <li>
+                                        <a class="main-menu-link" @*asp-controller="Home" asp-action=""*@>Product</a>
                                     </li>
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="product-details-default.html">Shop <i class="fa fa-angle-down"></i></a>
+                                        <a href="product-details-default.html">Category <i class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
@@ -202,32 +200,14 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="has-dropdown">
-                                        <a href="blog-single-sidebar-left.html">Blog <i class="fa fa-angle-down"></i></a>
-                                        <!-- Sub Menu -->
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid-sidebar-left.html">Blog Grid Sidebar left</a></li>
-                                            <li><a href="blog-grid-sidebar-right.html">Blog Grid Sidebar Right</a></li>
-                                            <li><a href="blog-full-width.html">Blog Full Width</a></li>
-                                            <li><a href="blog-single-sidebar-left.html">Blog Single Sidebar left</a></li>
-                                            <li><a href="blog-single-sidebar-right.html">Blog Single Sidebar Right</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-dropdown">
-                                        <a href="#">Pages <i class="fa fa-angle-down"></i></a>
-                                        <!-- Sub Menu -->
-                                        <ul class="sub-menu">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="faq.html">Frequently Questions</a></li>
-                                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
+                                    <li>
+                                        <a href="#">Blog</a>
                                     </li>
                                     <li>
-                                        <a href="about-us.html">About Us</a>
+                                        <a asp-controller="Home" asp-action="AboutUs">About Us</a>
                                     </li>
                                     <li>
-                                        <a href="contact-us.html">Contact Us</a>
+                                        <a asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                                     </li>
                                 </ul>
                             </nav>
