@@ -50,8 +50,13 @@ namespace AAL.Areas.Admin.Controllers
         // GET: Admin/Orders/Create
         public IActionResult Create()
         {
+            SelectList itemList = new SelectList(_context.Items.Select(i => new {i.ItemId,i.ItemName}),"ItemId","ItemName");
+            ViewBag.ItemList = itemList;
             return View();
         }
+
+
+        
 
         // POST: Admin/Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -161,5 +166,13 @@ namespace AAL.Areas.Admin.Controllers
         {
           return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
         }
+        [HttpPost]
+        public void AddOrderDetail(int orderId, List<OrderDetail> orderDetailList)
+        {
+            orderDetailList.ForEach(x => x.OrderId = orderId);
+            _context.OrderDetails.AddRange(orderDetailList);
+            _context.SaveChanges();
+        }
+
     }
 }

@@ -35,12 +35,28 @@
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ItemID</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContent">
+                    <tr>
+                        
+                    </tr>
+                  
+                </tbody>
+                
+
+            </table>
             <div class="form-group">
                 <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target=".bs-add-item-modal-lg">Add Item</button>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" id = "submitOrder" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -56,17 +72,26 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
+
+
+
             <div class="modal-body">
                 <div class="form-group">
                 <label class="control-label">Item</label>
-                <select class="form-control">
-
+                <select class="form-control" id="itemId" asp-items="@ViewBag.ItemList">
                 </select>
+
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label class="control-label">Quantity</label>
+                <input class="form-control" id ="quantity"/>
+             
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSaveItem">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div><!-- /.modal-content -->
@@ -78,4 +103,28 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+$(document).ready(function() {
+    $("#btnSaveItem").click(function() {   
+        var itemid =  $("#itemId").val();
+        var quantity = $("#quantity").val();
+
+        $("#itemId option[value='" + itemid + "']").each(function() {
+    $(this).remove();
+    })
+        
+        
+        $("#tableContent").append("<tr><th>" + itemid + "</th><th>" +  quantity + "</th></tr>");
+        
+    })
+
+    $.ajax({
+        url : "",
+        dataType : "json",
+        method : ""
+    }
+    )
+})
+    </script>
+
     }
