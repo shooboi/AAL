@@ -364,3 +364,5 @@ FodyWeavers.xsd
 AAL/AAL/appsettings.json
 AAL/AAL/Models/AALContext.cs
 AAL/AAL/wwwroot/ItemImages/*
+AAL/AAL/bin/Debug/net6.0/AAL.dll
+AAL/AAL/bin/Debug/net6.0/AAL.pdb
