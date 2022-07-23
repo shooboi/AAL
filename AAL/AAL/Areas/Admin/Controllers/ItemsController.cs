@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AAL.Models;
 using Microsoft.AspNetCore.Authorization;
 using AAL.Models.DTO;
+using OfficeOpenXml;
 
 namespace AAL.Areas.Admin.Controllers
 {
@@ -164,14 +165,14 @@ namespace AAL.Areas.Admin.Controllers
             {
                 _context.Items.Remove(item);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ItemExists(int id)
         {
-          return (_context.Items?.Any(e => e.ItemId == id)).GetValueOrDefault();
+            return (_context.Items?.Any(e => e.ItemId == id)).GetValueOrDefault();
         }
         public async Task<string> Upload(IFormFile file)
 
@@ -181,10 +182,63 @@ namespace AAL.Areas.Admin.Controllers
         }
 
         public IActionResult DeleteFile(string filetodelete)
-
         {
             Utility.Delete(filetodelete, "ItemImages");
             return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ImportExcel(IFormFile file)
+        {
+            try
+            {
+                if (file != null)
+                {
+                    FileInfo path = new FileInfo(@"wwwroot/uploads");
+                    if (!Directory.Exists(path.FullName))
+                    {
+                        Directory.CreateDirectory(path.FullName);
+                    }
+
+                    string fileName = Path.GetFileName(file.FileName);
+                    string filePath = Path.Combine(path.FullName, fileName);
+                    using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    using (ExcelPackage excel = new ExcelPackage(filePath))
+                    {
+                        ExcelWorksheet worksheet = excel.Workbook.Worksheets[0];
+                        int rowCount = worksheet.Dimension.Rows;
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            var item = new Item
+                            {
+                                ItemName = worksheet.Cells[row, 1].Value.ToString(),
+                                Brand = worksheet.Cells[row, 2].Value.ToString(),
+                                Model = worksheet.Cells[row, 3].Value.ToString(),
+                                Desc = worksheet.Cells[row, 4].Value.ToString(),
+                                Price = Convert.ToDecimal(worksheet.Cells[row, 6].Value),
+                                Stock = Convert.ToInt32(worksheet.Cells[row, 7].Value)
+                            };
+
+                            if (item == null)
+                            {
+                                throw new Exception($"Item is null");
+                            }
+                            var result =  _context.Items.AddAsync(item);
+                        }
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["error"] = $"Error {e.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
