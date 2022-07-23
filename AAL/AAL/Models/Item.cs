@@ -24,7 +24,6 @@ namespace AAL.Models
         [Required]
         [StringLength(30, MinimumLength = 3)]
         public string? Desc { get; set; }
-        [Required]
         public string? Img { get; set; }
         [Required]
         [Range(1,double.MaxValue)]

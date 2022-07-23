@@ -14,9 +14,14 @@
                     <div class="box">
                         <div class="p-1 pl-10">
                             <a class="btn btn-primary" asp-action="Create">Create new</a>
+                            <form asp-area="Admin" asp-controller="Items" asp-action="ImportExcel" style="display: none" method="post" enctype="multipart/form-data">
+                                <input type="file" id="in-import" name="file" accept=".xlsx" />
+                                <input type="submit" id="handle-import" />
+                            </form>
+                            <button id="btn-import" asp-controller="Items" asp-action="ImportExcel" data-target="addTeacher" class=" btn btn-primary d-none d-md-inline-flex"><span>Import</span></button>
                         </div>
                         <div class="table-responsive">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap p-1">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap p-1">
                                 <thead>
                                     <tr>
                                         <th>
@@ -69,10 +74,10 @@
                                                 <div id="Item_@item.ItemId" style="display:none">
                                                     <img src="@item.Img" alt="" height=100 width=200 />
                                                 </div>
-                                                <button class="btn-primary" onmouseover=".style.display=='btn-primary:hover'" title="Click to Show/Hide Image"
-                                                    type="button" onclick="if(document.getElementById('Item_@item.ItemId') .style.display=='none')
-                                    {document.getElementById('Item_@item.ItemId') .style.display=''}
-                                    else {document.getElementById('Item_@item.ItemId') .style.display='none'}">
+                                                <button class="btn-primary" title="Click to Show/Hide Image"
+                                                    type="button" onclick="if(document.getElementById('Item_@item.ItemId').style.display=='none')
+                                    {document.getElementById('Item_@item.ItemId').style.display=''}
+                                    else {document.getElementById('Item_@item.ItemId').style.display='none'}">
                                                     Show/Hide
                                                 </button>
                                             </td>
@@ -90,7 +95,7 @@
                                             </td>
                                             <td>
                                                 <a class="fa  fa-pencil" asp-action="Edit" asp-route-id="@item.ItemId"> Edit</a> |
-                                                <a class=" fa fa-info-circle" asp-action="Details" asp-route-id="@item.ItemId"> Details</a> | 
+                                                <a class=" fa fa-info-circle" asp-action="Details" asp-route-id="@item.ItemId"> Details</a> |
                                                 <a class=" fa fa-trash" asp-action="Delete" asp-route-id="@item.ItemId"> Delete</a>
                                             </td>
                                         </tr>
@@ -104,4 +109,3 @@
         </div>
     </div>
 </div>
-
