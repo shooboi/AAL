@@ -12,14 +12,24 @@ namespace AAL.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(Category? category)
+        private async Task<IEnumerable<Category>> GetCategories()
         {
+            var qr = (from c in _context.Categories select c)
+             .Include(c => c.CatParent)
+             .Include(c => c.InverseCatParent);
+
+            var categories = (await qr.ToListAsync())
+                             .Where(c => c.CatParent == null)
+                             .ToList();
+            return categories;
+        }
+        public async Task<IActionResult> Index(int? categoryId)
+        {
+            ViewBag.CategoryList = GetCategories();
+
             ViewData["PageTitle"] = "All Products";
-            //if (category.CatName)
-            //{
-               
-            //} 
-            var ItemList = _context.Items .ToList();
+            var ItemList = _context.Items.Where(cate=>cate.CatId == categoryId).ToList();
+            
             return View(ItemList);
         }
 
