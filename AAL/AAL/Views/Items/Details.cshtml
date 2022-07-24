@@ -1,0 +1,98 @@
+﻿@model AAL.Models.Item
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
+                        <h3 class="breadcrumb-title">@Model.ItemName</h3>
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="">Home</a></li>
+                                    <li><a asp-controller="Items" asp-action="">Shop</a></li>
+                                    <li class="active" aria-current="page">Product Details </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ...:::: End Breadcrumb Section:::... -->
+
+    <!-- Start Product Details Section -->
+    <div class="product-details-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-details-gallery-area">
+                        <div class="product-large-image product-large-image-horaizontal">
+                            <div class="product-image-large-single">
+                                <img src="@Model.Img" alt="">
+                            </div>
+                           </div>
+                        </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-details-content-area">
+                        <!-- Start  Product Details Text Area-->
+                        <div class="product-details-text">
+                            <h4 class="title">@Model.ItemName</h4>
+                            <div class="d-flex align-items-center">
+                                <div class="product-review">
+                                    <span class="review-fill"><i class="fa fa-star"></i></span>
+                                    <span class="review-fill"><i class="fa fa-star"></i></span>
+                                    <span class="review-fill"><i class="fa fa-star"></i></span>
+                                    <span class="review-fill"><i class="fa fa-star"></i></span>
+                                    <span class="review-empty"><i class="fa fa-star"></i></span>
+                                </div>
+                                <a href="" class="customer-review">(customer review )</a>
+                            </div>
+                            <div class="price">$@Model.Price</div>
+                            <p>Model: <b>@Model.Model</b> </p>
+                            <p>Brand: <b>@Model.Brand</b> </p>
+                            <p>Stock: <b>@Model.Stock</b> Left </p>
+                            <p>Category: <b>@Model.CatId</b> </p>
+                            <p>Description: @Model.Desc</p>
+                            
+                        </div> <!-- End  Product Details Text Area-->
+                        <!-- Start Product Variable Area -->
+                        <div class="product-details-variable">
+                            <h4 class="title">Available Options</h4>
+                            
+                            <div class="d-flex align-items-center">
+                                <div class="variable-single-item ">
+                                    <span>Quantity</span>
+                                    <div class="product-variable-quantity">
+                                        <input min="1" max="100" value="1" type="number">
+                                    </div>
+                                </div>
+
+                                <div class="product-add-to-cart-btn">
+                                    <a href="#" data-toggle="modal" data-target="#modalAddcart">Add To Cart</a>
+                                </div>
+                            </div>
+                        </div> <!-- End Product Variable Area -->
+                        
+                        <!-- Start  Product Details Social Area-->
+                        <div class="product-details-social">
+                            <ul>
+                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i>Like</a></li>
+                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i>Tweet</a></li>
+                                <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i>Save</a></li>
+                                <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i>Save</a></li>
+                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i>Linked</a></li>
+                            </ul>
+                        </div> <!-- End  Product Details Social Area-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Product Details Section -->
